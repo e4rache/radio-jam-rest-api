@@ -1,0 +1,17 @@
+{
+  "name": "radio-jam-rest-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/e4rache/radio-jam-rest-api.git",
+  "author": "e4rache <e4rache@protonmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.7",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.1"
+  }
+}
