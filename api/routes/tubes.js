@@ -3,8 +3,16 @@ const multer = require("multer");
 
 const router = express.Router();
 
-const tubesController = require("../controllers/tubes");
+const tubeController = require("../controllers/tubeController");
 
-router.get("/", tubesController.getAll);
+router.get("/", tubeController.getAll);
+
+router.post("/", tubeController.create);
+
+router.get("/:tubeId", tubeController.get);
+
+router.patch("/:tubeId", tubeController.update);
+
+router.delete("/:tubeId", tubeController.delete);
 
 module.exports = router;

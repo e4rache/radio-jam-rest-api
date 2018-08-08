@@ -8,10 +8,30 @@ const tubeRoutes = require("./api/routes/tubes");
 
 const app = express();
 
+const config = process.env;
+
 app.use(morgan("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// db connection
+
+const connectionString = `mongodb+srv://${config.MONGO_ATLAS_LOGIN}:${
+  config.MONGO_ATLAS_PASSWORD
+}@cluster0-zd998.mongodb.net/radio-jam?retryWrites=false`;
+
+mongoose.connect(
+  connectionString,
+  { useNewUrlParser: true }
+);
+
+// middlewares
+
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use("/images", express.static("images"));
 
 // CORS
 
