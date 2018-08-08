@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const radioRoutes = require("./api/routes/radios");
 const tubeRoutes = require("./api/routes/tubes");
@@ -9,11 +10,6 @@ const tubeRoutes = require("./api/routes/tubes");
 const app = express();
 
 const config = process.env;
-
-app.use(morgan("dev"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // db connection
 
@@ -25,16 +21,8 @@ mongoose.connect(
   connectionString,
   { useNewUrlParser: true }
 );
-
-// middlewares
-
-app.use(morgan("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use("/images", express.static("images"));
-
 // CORS
-
+/*
 app.use((req, res, next) => {
   res.header("Acess-Control-Allow-Origin", "*");
   res.header(
@@ -49,6 +37,16 @@ app.use((req, res, next) => {
   }
   next();
 });
+*/
+
+app.use(cors());
+
+// middlewares
+
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use("/images", express.static("images"));
 
 // routes
 
