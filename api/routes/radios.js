@@ -7,11 +7,11 @@ const radioController = require("../controllers/radioController");
 
 router.get("/", radioController.getAll);
 
+router.post("/", radioController.create);
+
 router.get("/:radioId", radioController.get);
 
 router.patch("/:radioId", radioController.update);
-
-router.post("/", radioController.create);
 
 router.delete("/:radioId", radioController.delete);
 
