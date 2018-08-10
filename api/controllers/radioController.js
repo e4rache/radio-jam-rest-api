@@ -77,14 +77,16 @@ exports.create = (req, res, next) => {
 exports.update = (req, res, next) => {
   const id = req.params.radioId;
   console.log(`radioController.update() - id`, id);
-  const updateOps = {};
+  console.log(`radioController.update() - req.headers`, req.headers);
+  console.log(`radioController.update() - req.body`, req.body);
+  console.log(`radioController.update() - req.params`, req.params);
 
-  for (const ops of req.body) {
-    console.log(`updateOps[${ops.propName}] = ${ops.propValue}`);
-    updateOps[ops.propName] = ops.propValue;
-  }
-  console.log(`radioController.update() - updateOps`, updateOps);
-  Radio.update({ _id: id }, { $set: updateOps })
+  let radioOps = req.body;
+  console.log(`radioController.update() - radioOps`, radioOps);
+  delete radioOps["_id"];
+  console.log(`radioController.update() - radioOps`, radioOps);
+
+  Radio.update({ _id: id }, { $set: radioOps })
     .exec()
     .then(result => {
       console.log("radioController.update() - result", result);
