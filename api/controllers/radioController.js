@@ -50,6 +50,7 @@ exports.get = (req, res, next) => {
 };
 
 exports.create = (req, res, next) => {
+  console.log('radioController.create() - req.body', req.body)
   const { name, brand, model, description } = req.body;
   const radio = new Radio({
     _id: new mongoose.Types.ObjectId(),
@@ -77,12 +78,12 @@ exports.create = (req, res, next) => {
 exports.update = (req, res, next) => {
   const id = req.params.radioId;
   console.log(`radioController.update() - id`, id);
-  console.log(`radioController.update() - req.headers`, req.headers);
-  console.log(`radioController.update() - req.body`, req.body);
-  console.log(`radioController.update() - req.params`, req.params);
+  //console.log(`radioController.update() - req.headers`, req.headers);
+  //console.log(`radioController.update() - req.body`, req.body);
+  //console.log(`radioController.update() - req.params`, req.params);
 
   let radioOps = req.body;
-  console.log(`radioController.update() - radioOps`, radioOps);
+  //console.log(`radioController.update() - radioOps`, radioOps);
   delete radioOps["_id"];
   console.log(`radioController.update() - radioOps`, radioOps);
 

@@ -1,21 +1,22 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const cors = require("cors");
+const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
-const radioRoutes = require("./api/routes/radios");
-const tubeRoutes = require("./api/routes/tubes");
+const radioRoutes = require('./api/routes/radios')
+const tubeRoutes = require('./api/routes/tubes')
+const userRoutes = require('./api/routes/users')
 
-const app = express();
+const app = express()
 
-const config = process.env;
+const config = process.env
 
 // db connection
 
 const connectionString = `mongodb+srv://${config.MONGO_ATLAS_LOGIN}:${
   config.MONGO_ATLAS_PASSWORD
-}@cluster0-zd998.mongodb.net/radio-jam?retryWrites=false`;
+  }@cluster0-zd998.mongodb.net/radio-jam?retryWrites=false`;
 
 mongoose.connect(
   connectionString,
@@ -35,8 +36,9 @@ app.use("/images", express.static("images"));
 
 // routes
 
-app.use("/radios", radioRoutes);
-app.use("/tubes", tubeRoutes);
+app.use('/radios', radioRoutes)
+app.use('/tubes', tubeRoutes)
+app.use('/users', userRoutes)
 
 // error handling
 
