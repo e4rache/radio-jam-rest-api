@@ -10,6 +10,4 @@ router.delete('/:userId', userController.delete)
 
 router.get('/', userController.getAll)
 
-router.post('/', userController.authenticate)
-
 module.exports = router
