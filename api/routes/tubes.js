@@ -1,18 +1,17 @@
-const express = require("express");
-const multer = require("multer");
+const express = require('express')
+const multer = require('multer')
+const router = express.Router()
+const tubeController = require('../controllers/tubeController')
+const checkAuth = require('../middleware/check-auth')
 
-const router = express.Router();
+router.get('/', tubeController.getAll)
 
-const tubeController = require("../controllers/tubeController");
+router.post('/', checkAuth, tubeController.create)
 
-router.get("/", tubeController.getAll);
+router.get('/:tubeId', tubeController.get)
 
-router.post("/", tubeController.create);
+router.patch('/:tubeId', checkAuth, tubeController.update)
 
-router.get("/:tubeId", tubeController.get);
-
-router.patch("/:tubeId", tubeController.update);
-
-router.delete("/:tubeId", tubeController.delete);
+router.delete('/:tubeId', checkAuth, tubeController.delete)
 
 module.exports = router;

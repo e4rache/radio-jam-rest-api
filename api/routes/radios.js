@@ -1,18 +1,19 @@
-const express = require("express");
-const multer = require("multer");
+const express = require('express')
+const multer = require('multer')
+const radioController = require('../controllers/radioController')
 
-const router = express.Router();
+const router = express.Router()
 
-const radioController = require("../controllers/radioController");
+const checkAuth = require('../middleware/check-auth')
 
-router.get("/", radioController.getAll);
+router.get('/', radioController.getAll)
 
-router.post("/", radioController.create);
+router.post('/', checkAuth, radioController.create)
 
-router.get("/:radioId", radioController.get);
+router.get('/:radioId', radioController.get)
 
-router.patch("/:radioId", radioController.update);
+router.patch('/:radioId', checkAuth, radioController.update)
 
-router.delete("/:radioId", radioController.delete);
+router.delete('/:radioId', checkAuth, radioController.delete)
 
-module.exports = router;
+module.exports = router
