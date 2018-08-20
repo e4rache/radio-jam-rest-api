@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken')
-
-const JWT_KEY = 'ihPwY2TrghWf9OejSuF07DAj4L775YdM0tcxS7o'
+const config = require('../../config.js')
 
 module.exports = (req, res, next) => {
     try {
+        const JWT_KEY = config.main.JWT_KEY
+        //console.log('JWT_KEY', JWT_KEY)
         const token = req.headers.authorization.split(' ')[1]
         const decoded = jwt.verify(token, JWT_KEY)
         req.userData = decoded

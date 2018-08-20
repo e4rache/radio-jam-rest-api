@@ -62,3 +62,4 @@ typings/
 
 # nodemon config
 nodemon.json
+config.js

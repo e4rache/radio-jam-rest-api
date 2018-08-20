@@ -10,12 +10,13 @@ const userRoutes = require('./api/routes/users')
 
 const app = express()
 
-const config = process.env
+const config = require('./config.js')
+console.log(config)
 
 // db connection
 
-const connectionString = `mongodb+srv://${config.MONGO_ATLAS_LOGIN}:${
-  config.MONGO_ATLAS_PASSWORD
+const connectionString = `mongodb+srv://${config.main.MONGO_ATLAS_LOGIN}:${
+  config.main.MONGO_ATLAS_PASSWORD
   }@cluster0-zd998.mongodb.net/radio-jam?retryWrites=false`;
 
 mongoose.connect(

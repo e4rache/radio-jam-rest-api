@@ -5,8 +5,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const fieldSelect = 'name brand model description'
 
-// TODO: externalize key to config file
-const JWT_KEY = "ihPwY2TrghWf9OejSuF07DAj4L775YdM0tcxS7o"
+const config = require('../../config.js')
 
 exports.create = (req, res, next) => {
     console.log('userController.create')
@@ -74,6 +73,7 @@ exports.authenticate = (req, res, next) => {
                 }
                 if (result) {
                     console.log('userController.authenticate() - bcrypt.compare() - result', result);
+                    const JWT_KEY = config.main.JWT_KEY
                     const token = jwt.sign(
                         {
                             email: user.email,
