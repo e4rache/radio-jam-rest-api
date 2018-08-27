@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Radio = require("../models/radio");
 
-const fieldSelect = "name brand model description";
+const fieldSelect = "brand model serialNumber description";
 
 exports.getAll = (req, res, next) => {
   Radio.find()
@@ -51,12 +51,12 @@ exports.get = (req, res, next) => {
 
 exports.create = (req, res, next) => {
   console.log('radioController.create() - req.body', req.body)
-  const { name, brand, model, description } = req.body;
+  const { brand, model, serialNumber, description } = req.body;
   const radio = new Radio({
     _id: new mongoose.Types.ObjectId(),
-    name,
     brand,
     model,
+    serialNumber,
     description
   });
 

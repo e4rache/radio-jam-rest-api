@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const radioSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  name: { type: String, required: true },
-  brand: { type: String },
+  brand: { type: String, required: true },
   model: { type: String },
+  serialNumber: { type: String },
   description: { type: String }
 });
 
